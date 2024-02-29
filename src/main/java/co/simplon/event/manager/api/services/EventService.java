@@ -17,4 +17,18 @@ public class EventService {
     public Event getEventById( UUID eventId) {
         return Database.getEventById(eventId);
     }
+    
+    public void replaceEvent(UUID eventId, Event event) {
+        Event entity = Database.getEventById(eventId);
+        entity.setName(event.getName());
+        entity.setDescription(event.getDescription());
+        entity.setStart(event.getStart());
+        entity.setEnd(event.getEnd());
+        Database.updateEvent(entity);
+    }
+ 
+    
+    public void deleteEvent(UUID id) {
+    	Database.deleteEvent(id);
+    }
 }

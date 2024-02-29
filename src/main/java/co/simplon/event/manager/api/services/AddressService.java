@@ -17,4 +17,17 @@ public class AddressService {
     public Address getAddressById( UUID addressId) {
         return Database.getAddressById(addressId);
     }
+    
+    public void replaceAddress(UUID addressId, Address address) {
+        Address entity = Database.getAddressById(addressId);
+        entity.setRoad(address.getRoad());
+        entity.setZipcode(address.getZipcode());
+        entity.setTown(address.getTown());
+        Database.updateAddress(entity);
+    }
+ 
+    
+    public void deleteAddress(UUID id) {
+    	Database.deleteAddress(id);
+    }
 }

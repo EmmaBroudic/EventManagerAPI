@@ -23,6 +23,14 @@ public class Database {
         return mapParticipant.get(participantId);
     }
     
+    public static Participant updateParticipant(Participant participant) {
+    	return mapParticipant.put(participant.getId(), participant);
+    }
+    
+    public static void deleteParticipant(UUID participantId) {
+    	mapParticipant.remove(participantId);
+    }
+    
     public static UUID addEvent(Event event) {
     	UUID newEventId = UUID.randomUUID();
     	event.setId(newEventId);
@@ -34,6 +42,14 @@ public class Database {
         return mapEvent.get(eventId);
     }
     
+    public static Event updateEvent(Event event) {
+    	return mapEvent.put(event.getId(), event);
+    }
+    
+    public static void deleteEvent(UUID eventId) {
+    	mapEvent.remove(eventId);
+    }
+    
     public static UUID addAddress(Address address) {
     	UUID newAddressId = UUID.randomUUID();
     	address.setId(newAddressId);
@@ -43,6 +59,14 @@ public class Database {
     
     public static Address getAddressById(UUID addressId) {
         return mapAddress.get(addressId);
+    }
+    
+    public static Address updateAddress(Address address) {
+    	return mapAddress.put(address.getId(), address);
+    }
+    
+    public static void deleteAddress(UUID addressId) {
+    	mapAddress.remove(addressId);
     }
 
 }
