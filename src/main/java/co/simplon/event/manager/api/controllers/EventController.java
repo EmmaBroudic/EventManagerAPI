@@ -11,27 +11,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.event.manager.api.entities.Participant;
-import co.simplon.event.manager.api.services.ParticipantService;
+import co.simplon.event.manager.api.entities.Event;
+import co.simplon.event.manager.api.services.EventService;
 
 @RestController
-@RequestMapping("/participant")
-public class ParticipantController {
+@RequestMapping("/event")
+public class EventController {
 	
-	private final ParticipantService service;
-	
-	public ParticipantController(ParticipantService service) {
+	private final EventService service;
+		
+	public EventController(EventService service) {
 		this.service = service;
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public UUID create(@RequestBody Participant participant) {
-	    return service.create(participant);
+	public UUID create(@RequestBody Event event) {
+	    return service.create(event);
 	}
 
-    @GetMapping("/{participantId}")
-    public Participant getParticipantById(@PathVariable UUID participantId) {
-        return service.getParticipantById(participantId);
+    @GetMapping("/{eventId}")
+    public Event getEventById(@PathVariable UUID eventId) {
+        return service.getEventById(eventId);
     }
 }

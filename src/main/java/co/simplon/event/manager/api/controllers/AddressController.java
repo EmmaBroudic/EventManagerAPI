@@ -11,27 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.event.manager.api.entities.Participant;
-import co.simplon.event.manager.api.services.ParticipantService;
+import co.simplon.event.manager.api.entities.Address;
+import co.simplon.event.manager.api.services.AddressService;
 
 @RestController
-@RequestMapping("/participant")
-public class ParticipantController {
+@RequestMapping("/address")
+public class AddressController {
 	
-	private final ParticipantService service;
+	private final AddressService service;
 	
-	public ParticipantController(ParticipantService service) {
+	public AddressController(AddressService service) {
 		this.service = service;
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public UUID create(@RequestBody Participant participant) {
-	    return service.create(participant);
+	public UUID create(@RequestBody Address address) {
+	    return service.create(address);
 	}
 
-    @GetMapping("/{participantId}")
-    public Participant getParticipantById(@PathVariable UUID participantId) {
-        return service.getParticipantById(participantId);
+    @GetMapping("/{addressId}")
+    public Address getAddressById(@PathVariable UUID addressId) {
+        return service.getAddressById(addressId);
     }
+
 }
