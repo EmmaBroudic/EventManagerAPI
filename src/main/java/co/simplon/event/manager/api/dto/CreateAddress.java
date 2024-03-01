@@ -2,6 +2,9 @@ package co.simplon.event.manager.api.dto;
 
 import java.util.UUID;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class CreateAddress {
 	
 	private UUID id;
@@ -31,6 +34,8 @@ public class CreateAddress {
         return this.road;
     }
 
+    @NotNull
+    @Size(max=150)
     public void setRoad(String road) {
         this.road = road;
     }
@@ -39,6 +44,8 @@ public class CreateAddress {
         return this.zipcode;
     }
 
+    @NotNull
+    @Size(max=5)
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
@@ -47,6 +54,8 @@ public class CreateAddress {
         return this.town;
     }
 
+    @NotNull
+    @Size(max=100)
     public void setTown(String town) {
         this.town = town;
     }

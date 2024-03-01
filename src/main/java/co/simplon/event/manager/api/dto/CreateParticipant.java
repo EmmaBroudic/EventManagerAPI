@@ -3,6 +3,10 @@ package co.simplon.event.manager.api.dto;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 public class CreateParticipant {
 	private UUID id;
 	private String firstname;
@@ -31,6 +35,8 @@ public class CreateParticipant {
         return this.firstname;
     }
 
+    @NotNull
+    @Size(max=150)
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
@@ -39,6 +45,8 @@ public class CreateParticipant {
         return this.lastname;
     }
 
+    @NotNull
+    @Size(max=150)
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
@@ -47,6 +55,8 @@ public class CreateParticipant {
         return this.birthdate;
     }
 
+    @NotNull
+    @Past
     public void setBirthDate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
